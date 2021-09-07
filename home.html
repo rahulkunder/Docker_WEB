@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet"  href="cssSheet.css">
+    
+	<script>
+            function getCmd(){
+                 var i = document.getElementById("cmd").value
+                 var xhr = new XMLHttpRequest();
+                 xhr.open("GET", "http://192.168.29.122/cgi-bin/docker.py?x=" +i,true);
+                 xhr.send();
+                 xhr.onload = function(){
+                 var output = xhr.responseText;
+                 document.getElementById("d1").innerHTML = output;
+                 }
+             }
+	     function customCont(){
+		     var n1 = document.getElementById("n1").value
+		     var image = document.getElementById("image").value
+		     var xhr = new XMLHttpRequest();
+		     xhr.open("GET", "http://192.168.29.122/cgi-bin/docker.py?x="+ n1 + "&y=" +  image  ,true);
+                     xhr.send();
+                     xhr.onload = function(){
+                     var output = xhr.responseText;
+                     document.getElementById("d1").innerHTML = output;
+		     }
+	     }
+	     
+            </script>
+    
+    
+    </head>
+    <body>
+        <h1 class="head1"> DOCKER WEB-APP </h1>
+      
+        <img src="docker.gif" width="170px" height="200px" left="700px" position= "absolute" > 
+        <div class="flipCard">
+        <div class="innerCard">
+        <div class="frontCard">
+        <center><h1><b>Docker Launch Automnation <b></h1></center>
+        </div>
+        
+	
+	<div class="cardBack">
+        <h1>Launch Container</h1>
+        Container Name  <input type="text" id="n1"> <br><br>
+        Select Image  &nbsp;&nbsp;
+        <Select id="image">
+            <option value="centos"> Centos</option>
+            <option value="ubuntu"> Ubuntu</option>
+            <option value="httpd"> httpd</option>
+             
+        </Select>
+        <button class="button button--fenrir" onclick="customCont();" >
+            <svg aria-hidden="true" class="progress" width="70" height="70" viewbox="0 0 70 70">
+                <path class="progress__circle" d="m35,2.5c17.955803,0 32.5,14.544199 32.5,32.5c0,17.955803 -14.544197,32.5 -32.5,32.5c-17.955803,0 -32.5,-14.544197 -32.5,-32.5c0,-17.955801 14.544197,-32.5 32.5,-32.5z" />
+                <path class="progress__path" d="m35,2.5c17.955803,0 32.5,14.544199 32.5,32.5c0,17.955803 -14.544197,32.5 -32.5,32.5c-17.955803,0 -32.5,-14.544197 -32.5,-32.5c0,-17.955801 14.544197,-32.5 32.5,-32.5z" pathLength="1" />
+            </svg>
+            <span style="color: wheat;">Launch</span>
+        </button>
+        </div>
+        </div>
+        </div>
+        
+     
+        <div class="flipCard2">
+            <div class="innerCard">
+            <div class="frontCard">
+            <h1><b>Command Shell <b></h1>
+            </div>
+            <div class="cardBack">
+            <h1>Enter Custom commmand</h1>
+            <input type="text" name='command'  id = "cmd" style="width: 250px; height: 20px;"> <br>
+            <button class="button button--fenrir" onclick="getCmd();">
+                <svg aria-hidden="true" class="progress" width="70" height="70" viewbox="0 0 70 70">
+                    <path class="progress__circle" d="m35,2.5c17.955803,0 32.5,14.544199 32.5,32.5c0,17.955803 -14.544197,32.5 -32.5,32.5c-17.955803,0 -32.5,-14.544197 -32.5,-32.5c0,-17.955801 14.544197,-32.5 32.5,-32.5z" />
+                    <path class="progress__path" d="m35,2.5c17.955803,0 32.5,14.544199 32.5,32.5c0,17.955803 -14.544197,32.5 -32.5,32.5c-17.955803,0 -32.5,-14.544197 -32.5,-32.5c0,-17.955801 14.544197,-32.5 32.5,-32.5z" pathLength="1" />
+                </svg>
+                <span style="color: wheat;">Launch</span>
+       	        </button>
+        
+    		</div>
+    		</div>
+    
+	</div>
+	<pre>
+    	<div id ="d1" class = "w3-container" > </div>
+	</pre>
+
+	</body>
+</html>
+
+
+
